@@ -17,6 +17,13 @@ function bound(a, x, b) {
     // Bound x b/w a and b
     return Math.max(a, Math.min(b, x));
 }
+function removeAllEventListeners(element) {
+    // Clone the element
+    const clonedElement = element.cloneNode(true);
+    // Replace the original element with the clone
+    element.parentNode.replaceChild(clonedElement, element);
+    return clonedElement;
+}
 
 class Park {
     constructor(id, name, imgPath, initPeople, initTrucks) {
@@ -59,7 +66,6 @@ class City {
             }
             remainingTrucks -= curTrucks;
             remainingPeople -= curPeople;
-            console.log(curPeople);
             this.parks.push(new Park(i, `Park ${i+1}`, `park_icons/${i+1}.png`, curPeople, curTrucks));
         }
     }
@@ -72,6 +78,7 @@ class City {
 class Game {
     constructor(city) {
         this.city = city;
+        console.log(city);
         this.playerPark = 0;
         this.playerProfits = 0;
 
@@ -160,7 +167,7 @@ class Game {
         this.hide(startButton);
 
         // Set up Next Hour listener
-        let nextHourBtn = document.getElementById('next-hour-btn');
+        let nextHourBtn = removeAllEventListeners(document.getElementById('next-hour-btn'));
         nextHourBtn.addEventListener('click', () => {this.incrementHour()});
 
         this.setupParkView(); 
@@ -230,7 +237,6 @@ class Game {
         this.city.numPeople = 0
         for (let i = 0; i < NUM_PARKS; i++) {
             let change = randInt(Math.floor(-MAX_PEOPLE / (20 * NUM_PARKS)), Math.floor(MAX_PEOPLE / (15 * NUM_PARKS)));
-            console.log(change);
             let newNumPeople = Math.max(0, parkList[i].numPeople + change)
             parkList[i].numPeople = newNumPeople;
             this.city.numPeople += newNumPeople;
@@ -239,6 +245,7 @@ class Game {
     }
 
     incrementHour() {
+        console.log(this.city.curDay, NUM_DAYS);
         if (this.city.curHour === 8) {
             this.city.curHour = 0;
             this.city.curDay += 1;
@@ -261,15 +268,14 @@ class Game {
     }
 
 
-
 }
 
 function startGame() {
     let initPeople = randInt(MIN_PEOPLE, MAX_PEOPLE);
     let initTrucks = randInt(MIN_TRUCKS, MAX_TRUCKS);
     let initParks = NUM_PARKS;
+
     gameState = new Game(new City(initParks, initPeople, initTrucks));
-    // Hide "Start Game" button
 }
 
 function restartGame() {
