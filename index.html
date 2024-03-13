@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zootopia Food Trucking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Zootopia Food Trucking</h1>
+        <p>Make the most possible profit in 3 days!</p>
+    </header>
+    <main>
+        <button id="start-button" onclick="startGame()">Start Game</button>
+
+        <!-- Park View Component -->
+        <div id="park-view" class="park-view hidden">
+            <h2>Park View</h2>
+            <div class="park-info">
+                <div class="left-section">
+                    <h3 id="park-name">Park A</h3>
+                    <img id="park-img" src="park.png" alt="Park Image">
+                </div>
+                <div class="right-section">
+                    <h4 id="cur-day">Day 1</h4>
+                    <h5 id="cur-hour">0:00 PM</h5>
+                    <p id="num-people">Current # of People: 100</p>
+                    <p id="num-trucks">Current # of Food Trucks: 5</p>
+                    <p id="total-profit">Total Profit: $5000</p>
+                    <button id="next-hour-btn">Go to Next Hour</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- City View Component -->
+        <div id="city-view" class="city-view hidden">
+            <h2>City View</h2>
+            <p>Select a park to depart to (or click on your current park to stay):</p>
+            <div id="park-grid" class="park-grid">
+                <!-- <div class="current-park park">
+                    <h3>City A</h3>
+                    <p>Departing Trucks: 3</p>
+                </div>
+                <div class="park">
+                    <h3>City B</h3>
+                    <p>Departing Trucks: 2</p>
+                </div>
+                <div class="park">
+                    <h3>City C</h3>
+                    <p>Departing Trucks: 0</p>
+                </div>
+                <div class="park">
+                    <h3>City D</h3>
+                    <p>Departing Trucks: 1</p>
+                </div> -->
+                <!-- Add more cities as needed -->
+            </div>
+        </div>
+        <div class="game-over hidden" id="game-over">
+            <div class="game-over-card">
+                <h2>Game Over!</h2>
+                <p style="font-size: 20px" id="game-over-profits">Total Profits: $100</p>
+                <button id="'restart-game-btn" onclick="restartGame()">Restart</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
