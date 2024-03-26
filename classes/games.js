@@ -9,6 +9,9 @@ class BaseGame {
         this.playerPark = 0;
         this.prevPlayerPark = 0;
         this.playerProfits = 0;
+        // Keeps track of moves in the form "Timestamp,Move|Timestamp,Move|..."
+        this.moveString = "";
+        this.prevTime = Date.now();
 
         this.setupGameUI();
     }
@@ -78,6 +81,8 @@ class BaseGame {
                 reference.prevPlayerPark = reference.playerPark;
                 reference.playerPark = park.id;
                 reference.switchToParkView();
+                reference.moveString += `|${Date.now() - reference.prevTime},${park.id}`
+                reference.prevTime = Date.now();
             })
 
             return parkCard;
@@ -121,7 +126,9 @@ class BaseGame {
         this.hide(cityView);
 
         var gameOverProfits = document.getElementById("game-over-profits");
+        var moveStringText = document.getElementById("move-string");
         gameOverProfits.textContent = `Total Profits: $${this.playerProfits}`;
+        moveStringText.textContent = `Player String: ${this.playerProfits}${this.moveString}`;
         this.show(gameOverScreen);
     }
 
