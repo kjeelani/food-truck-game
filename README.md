@@ -87,3 +87,5 @@ let testInput = {
     }
 }
 ```
+
+The player string at the end stores the profit and every move the player makes alongside the # of milliseconds they took. This is in the form: `Profit|Timestamp1,Park1|Timestamp2,Park2...`
