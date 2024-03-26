@@ -9,62 +9,67 @@
 <body>
     <header>
         <h1>Zootopia Food Trucking</h1>
-        <p>Make the most possible profit in 3 days!</p>
+        <p>You are running a food truck in the bountiful city of Zootopia, with many parks and citizens. Your goal is to create the most amount of profit in a day. At the end of each hour, you can decide to move to a different park or stay at your current one. Then you can tally up your profit and use that alongside other information to decide your action for the next hour. Good luck!</p>
     </header>
     <main>
         <button id="start-button" onclick="startGame()">Start Game</button>
 
         <!-- Park View Component -->
         <div id="park-view" class="park-view hidden">
-            <h2>Park View</h2>
+            <h2 id="park-name">Park View</h2>
             <div class="park-info">
                 <div class="left-section">
-                    <h3 id="park-name">Park A</h3>
                     <img id="park-img" src="park.png" alt="Park Image">
                 </div>
                 <div class="right-section">
-                    <h4 id="cur-day">Day 1</h4>
-                    <h5 id="cur-hour">0:00 PM</h5>
+                    <h3 id="cur-day">Day 1</h3>
+                    <h4 id="cur-hour">0:00 PM</h4>
+                    <p id="total-profit">Total Profit: $5000</p>
                     <p id="num-people">Current # of People: 100</p>
                     <p id="num-trucks">Current # of Food Trucks: 5</p>
-                    <p id="total-profit">Total Profit: $5000</p>
-                    <button id="next-hour-btn">Go to Next Hour</button>
+                    <p id="incoming-trucks"># of trucks that are departing this hour: N/A</p>
+                    <p id="outgoing-trucks"># of trucks that are arriving this hour: N/A</p>
+                    <button id="next-hour-btn">Next Hour</button>
+                    <!-- City View Component -->
+                    <div id="city-view" class="city-view hidden">
+                        <h3>Where will you go?</h3>
+                        <p>Choose to stay or depart to another park:</p>
+                        <div id="park-grid" class="park-grid">
+                            <!-- <div class="current-park park">
+                                <h3>City A</h3>
+                                <p>Departing Trucks: 3</p>
+                            </div>
+                            <div class="park">
+                                <h3>City B</h3>
+                                <p>Departing Trucks: 2</p>
+                            </div>
+                            <div class="park">
+                                <h3>City C</h3>
+                                <p>Departing Trucks: 0</p>
+                            </div>
+                            <div class="park">
+                                <h3>City D</h3>
+                                <p>Departing Trucks: 1</p>
+                            </div> -->
+                            <!-- Add more cities as needed -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- City View Component -->
-        <div id="city-view" class="city-view hidden">
-            <h2>City View</h2>
-            <p>Select a park to depart to (or click on your current park to stay):</p>
-            <div id="park-grid" class="park-grid">
-                <!-- <div class="current-park park">
-                    <h3>City A</h3>
-                    <p>Departing Trucks: 3</p>
-                </div>
-                <div class="park">
-                    <h3>City B</h3>
-                    <p>Departing Trucks: 2</p>
-                </div>
-                <div class="park">
-                    <h3>City C</h3>
-                    <p>Departing Trucks: 0</p>
-                </div>
-                <div class="park">
-                    <h3>City D</h3>
-                    <p>Departing Trucks: 1</p>
-                </div> -->
-                <!-- Add more cities as needed -->
-            </div>
-        </div>
+        
         <div class="game-over hidden" id="game-over">
             <div class="game-over-card">
                 <h2>Game Over!</h2>
                 <p style="font-size: 20px" id="game-over-profits">Total Profits: $100</p>
-                <button id="'restart-game-btn" onclick="restartGame()">Restart</button>
+                <button id="restart-game-btn" onclick="restartGame()">Restart</button>
             </div>
         </div>
     </main>
+    <script src="classes/utility.js"></script>
+    <script src="classes/cities.js"></script>
+    <script src="classes/games.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
