@@ -4,6 +4,7 @@ If one wishes to input settings for this game, use the following template:
 ```
 input = {
             numDays: int,
+            hoursPerDay: int,
             numParks: int,
             numPeople: int[numDays],
             numTrucks: int[numDays],
@@ -21,6 +22,7 @@ input = {
             people: int[numParks] where sum(initPeople) = numPeople[current day],
             departingTrucks: int[numParks],
             arrivingTrucks: int[numParks] where sum(departingTrucks) == sum(arrivingTrucks),
+            advice: string
         }
 ```
 
@@ -40,7 +42,8 @@ let testInput = {
                 0: {
                     "people": [50, 50, 50, 50],
                     "departingTrucks": [1, 1, 1, 1],
-                    "arrivingTrucks": [0, 4, 0, 0]
+                    "arrivingTrucks": [0, 4, 0, 0],
+                    "advice": "No Advice"
                 },
                 1: {
                     "people": [50, 60, 40, 50],
