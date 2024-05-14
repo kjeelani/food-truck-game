@@ -30,6 +30,7 @@ An example in JS:
 ```javascript
 let testInput = {
     "numDays": 1,
+    "hoursPerDay": 9,
     "numParks": 4,
     "numTrucks": 40,
     "numPeople": 200,
