@@ -1,6 +1,12 @@
-WIP
+## Overview
 
-If one wishes to input settings for this game, use the following template:
+This is the code for the Food Truck Game. The most updated version is in Qualtrics, but this is the base version with all major functionalities.
+
+The game involves a food truck driver, who has to decide every hour which park he should go to to maximize profits. He can use information such as the total # of people at his current park and the # of trucks leaving / departing. An AI will also give advice at times (configurable by JSON). 
+
+## Inputs
+
+If one wishes to input settings for this game, use the following template and build a JSON. Then upload it to the [bobalab-jsons](https://github.com/kjeelani/bobalab-jsons/tree/main) repository to host it
 ```
 input = {
             numDays: int,
@@ -91,5 +97,9 @@ let testInput = {
     }
 }
 ```
+More examples can be found in the [bobalab-jsons](https://github.com/kjeelani/bobalab-jsons/tree/main) repo with the jsons titled food-truck-game-X.
+
+## Outputs
 
 The player string at the end stores the profit and every move the player makes alongside the # of milliseconds they took. This is in the form: `Profit|Timestamp1,Park1|Timestamp2,Park2...`
+This is saved to Qualtrics after every game completion.
